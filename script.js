@@ -10,6 +10,7 @@ class PuppyBowlApp {
     this.viewRosterButton = document.getElementById('view-roster-button');
     this.filterButton = document.getElementById('filter-button');
     this.statusFilter = document.getElementById('status-filter');
+    this.rosterInfo = document.getElementById('roster-info');
 
     this.APIURL = `${BASE_URL}/api/${COHORT_NAME}/players`;
 
@@ -55,6 +56,7 @@ class PuppyBowlApp {
     players.forEach(player => {
       const playerCard = document.createElement('div');
       playerCard.classList.add('player-card');
+      playerCard.classList.add(player.status === 'field' ? 'field' : 'bench'); // Add CSS class based on status
 
       const playerImage = document.createElement('img');
       playerImage.src = player.imageUrl;
@@ -70,7 +72,14 @@ class PuppyBowlApp {
       playerBreed.textContent = `Breed: ${player.breed}`;
       playerCard.appendChild(playerBreed);
 
-      // Add more player details as needed
+      const playerId = document.createElement('p');
+      playerId.textContent = `ID: ${player.id}`;
+      playerCard.appendChild(playerId);
+
+      const playerStatus = document.createElement('p');
+      playerStatus.textContent = `Status: ${player.status}`;
+      playerStatus.classList.add('status'); // Add CSS class for the status
+      playerCard.appendChild(playerStatus);
 
       this.playerContainer.appendChild(playerCard);
     });
@@ -104,6 +113,7 @@ class PuppyBowlApp {
 
     const playerCard = document.createElement('div');
     playerCard.classList.add('player-card');
+    playerCard.classList.add(player.status === 'field' ? 'field' : 'bench'); // Add CSS class based on status
 
     const playerImage = document.createElement('img');
     playerImage.src = player.imageUrl;
@@ -119,7 +129,14 @@ class PuppyBowlApp {
     playerBreed.textContent = `Breed: ${player.breed}`;
     playerCard.appendChild(playerBreed);
 
-    // Add more player details as needed
+    const playerId = document.createElement('p');
+    playerId.textContent = `ID: ${player.id}`;
+    playerCard.appendChild(playerId);
+
+    const playerStatus = document.createElement('p');
+    playerStatus.textContent = `Status: ${player.status}`;
+    playerStatus.classList.add('status'); // Add CSS class for the status
+    playerCard.appendChild(playerStatus);
 
     this.playerContainer.appendChild(playerCard);
   }
@@ -148,12 +165,15 @@ class PuppyBowlApp {
         });
 
         this.renderPlayers(filteredPlayers);
+        
       })
       .catch(error => {
         this.displayError(error.message);
         console.error(error);
       });
   }
+
+  
 
   removePlayer(playerId) {
     fetch(`${this.APIURL}/${playerId}`, {
@@ -208,6 +228,7 @@ class PuppyBowlApp {
         }
 
         this.renderAddedPlayer(newPlayer);
+        this.fetchPlayers(); // Fetch and render the updated roster
 
         nameInput.value = '';
         breedInput.value = '';
@@ -225,6 +246,7 @@ class PuppyBowlApp {
 
     const playerCard = document.createElement('div');
     playerCard.classList.add('player-card');
+    playerCard.classList.add(player.status === 'field' ? 'field' : 'bench'); // Add CSS class based on status
 
     const playerImage = document.createElement('img');
     playerImage.src = player.imageUrl;
@@ -240,7 +262,14 @@ class PuppyBowlApp {
     playerBreed.textContent = `Breed: ${player.breed}`;
     playerCard.appendChild(playerBreed);
 
-    // Add more player details as needed
+    const playerId = document.createElement('p');
+    playerId.textContent = `ID: ${player.id}`;
+    playerCard.appendChild(playerId);
+
+    const playerStatus = document.createElement('p');
+    playerStatus.textContent = `Status: ${player.status}`;
+    playerStatus.classList.add('status'); // Add CSS class for the status
+    playerCard.appendChild(playerStatus);
 
     this.playerContainer.appendChild(playerCard);
   }

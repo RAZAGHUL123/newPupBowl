@@ -5,39 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Puppy Bowl</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Add styles for the breed filter dialog box */
-    .dialog-box {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.9);
-      color: #ffffff;
-      padding: 20px;
-      border-radius: 5px;
-      z-index: 9999;
-    }
-
-    .dialog-box h3 {
-      margin-top: 0;
-    }
-
-    .dialog-box p {
-      margin-bottom: 10px;
-    }
-
-    .dialog-box select {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .dialog-box button {
-      margin-right: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -46,7 +14,7 @@
     <div id="error-container"></div>
 
     <!-- Player form section -->
-    <form id="add-player-form">
+    <form id="add-player-form" class="form-container">
       <h2>Add a Player</h2>
       <div>
         <label for="name-input">Name:</label>
@@ -72,6 +40,7 @@
 
     <!-- Container for displaying all players -->
     <div id="all-players-container"></div>
+    <div id="roster-info"></div>
 
     <!-- Button container section -->
     <div class="button-container">

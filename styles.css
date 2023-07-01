@@ -66,3 +66,11 @@
     height: 150px; /* Set the desired height */
     object-fit: cover; /* Ensure the image maintains aspect ratio and covers the container */
   }
+  .field {
+    border: 2px solid green;
+  }
+  
+  .bench {
+    border: 2px solid brown;
+  }
+  
